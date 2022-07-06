@@ -134,7 +134,7 @@ app.use(
   currentAssetMiscellaneousAccountRouter
 );
 
-//tackling unhandled routes
+//tackling unhandled routes in the application
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
@@ -192,6 +192,7 @@ app.use("/api/v1/teams", teamRouter);
 app.use("/api/v1/uniqueProductAccount", uniqueProductAccountRouter);
 
 app.use(globalErrorHandler);
+
 //SERVER
 
 module.exports = app;
