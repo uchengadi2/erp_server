@@ -6,10 +6,12 @@ const citySchema = new mongoose.Schema(
       type: String,
       required: [true, "This field cannot be empty"],
     },
-    state: {
-      type: String,
-      enum: ["lagos", "ogun", "oyo", "osun", "ekiti", "ondo"],
-    },
+    state: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "State",
+      },
+    ],
     description: {
       type: String,
       trim: true,

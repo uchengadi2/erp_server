@@ -53,6 +53,11 @@ const staffRewardAccountRouter = require("./routes/staffRewardAccountRoute");
 const staffSubGlAccountRouter = require("./routes/staffSubGlAccountRoute");
 const teamRouter = require("./routes/teamRoute");
 const uniqueProductAccountRouter = require("./routes/uniqueProductAccountRoute");
+const schemeCodeRoute = require("./routes/schemeCodeRoute");
+const countryRoute = require("./routes/countryRoute");
+const stateRoute = require("./routes/stateRoute");
+const currencyRoute = require("./routes/currencyRoute");
+const locationRoute = require("./routes/locationRoute");
 
 const app = express();
 
@@ -133,11 +138,6 @@ app.use(
   "/api/v1/currentassetmiscellaneousaccounts",
   currentAssetMiscellaneousAccountRouter
 );
-
-//tackling unhandled routes in the application
-app.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
-});
 app.use("/api/v1/currentassetsubglaccounts", currentAssetSubGlAccountRouter);
 app.use("/api/v1/customerloanaccounts", customerLoanAccountRouter);
 app.use("/api/v1/customersubglaccounts", customerSubGlAccountRouter);
@@ -190,6 +190,16 @@ app.use("/api/v1/staffrewardaccounts", staffRewardAccountRouter);
 app.use("/api/v1/staffsubglaccounts", staffSubGlAccountRouter);
 app.use("/api/v1/teams", teamRouter);
 app.use("/api/v1/uniqueProductAccount", uniqueProductAccountRouter);
+app.use("/api/v1/schemecodes", schemeCodeRoute);
+app.use("/api/v1/countries", countryRoute);
+app.use("/api/v1/states", stateRoute);
+app.use("/api/v1/currencies", currencyRoute);
+app.use("/api/v1/locations", locationRoute);
+
+//tackling unhandled routes in the application
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
 
 app.use(globalErrorHandler);
 

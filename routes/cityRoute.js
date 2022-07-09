@@ -10,7 +10,7 @@ router
   .route("/")
   .get(authController.restrictTo("admin", "user"), cityController.getAllCities)
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("admin", "accountAdmin"),
     //cashAccountController.setAccountTransactionsAndUserId,
     cityController.createCity
   );
