@@ -9,6 +9,9 @@ const stateSchema = new mongoose.Schema(
     code: {
       type: String,
       required: [false, "Please provide the state code"],
+      minLength: 3,
+      maxLength: 4,
+      unique: true,
     },
     description: {
       type: String,

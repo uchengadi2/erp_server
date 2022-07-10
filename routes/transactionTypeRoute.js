@@ -1,5 +1,5 @@
 const express = require("express");
-const ServiceOutletController = require("./../controllers/serviceOutletController");
+const TransacTypeController = require("../controllers/transactionTypeController");
 const authController = require("./../controllers/authController");
 
 const router = express.Router({ mergeParams: true });
@@ -10,23 +10,23 @@ router
   .route("/")
   .get(
     authController.restrictTo("admin", "user"),
-    ServiceOutletController.getAllServiceOutlets
+    TransacTypeController.getAllTransactionTypes
   )
   .post(
     authController.restrictTo("admin"),
-    ServiceOutletController.createServiceOutlet
+    TransacTypeController.createTransactionType
   );
 
 router
   .route("/:id")
   .delete(
     authController.restrictTo("user", "admin"),
-    ServiceOutletController.deleteServiceOutlet
+    TransacTypeController.deleteTransactionType
   )
   .patch(
     authController.restrictTo("user", "admin"),
-    ServiceOutletController.updateServiceOutlet
+    TransacTypeController.updateTransactionType
   )
-  .get(ServiceOutletController.getServiceOutlet);
+  .get(TransacTypeController.getTransactionType);
 
 module.exports = router;

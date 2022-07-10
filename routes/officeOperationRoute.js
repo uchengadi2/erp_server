@@ -1,5 +1,5 @@
 const express = require("express");
-const ServiceOutletController = require("./../controllers/serviceOutletController");
+const officeOperationController = require("./../controllers/officeOperationsController");
 const authController = require("./../controllers/authController");
 
 const router = express.Router({ mergeParams: true });
@@ -10,23 +10,23 @@ router
   .route("/")
   .get(
     authController.restrictTo("admin", "user"),
-    ServiceOutletController.getAllServiceOutlets
+    officeOperationController.getAllOfficeOperations
   )
   .post(
-    authController.restrictTo("admin"),
-    ServiceOutletController.createServiceOutlet
+    authController.restrictTo("admin", "accountAdmin"),
+    officeOperationController.createOfficeOperation
   );
 
 router
   .route("/:id")
   .delete(
     authController.restrictTo("user", "admin"),
-    ServiceOutletController.deleteServiceOutlet
+    officeOperationController.deleteOfficeOperation
   )
   .patch(
     authController.restrictTo("user", "admin"),
-    ServiceOutletController.updateServiceOutlet
+    officeOperationController.updateOfficeOperation
   )
-  .get(ServiceOutletController.getServiceOutlet);
+  .get(officeOperationController.getOfficeOperation);
 
 module.exports = router;

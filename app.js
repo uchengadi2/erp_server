@@ -32,7 +32,7 @@ const fixedAssetDepreciationAccountRouter = require("./routes/fixedAssetDeprecia
 const fixedAssetMaintenanceAccountRouter = require("./routes/fixedAssetMaintenanceAccountRoute");
 const fixedAssetMiscellaneousAccountRouter = require("./routes/fixedAssetMiscellaneousAccountRoute");
 const fixedAssetSubGlAccountRouter = require("./routes/fixedAssetSubGlAccountRoute");
-const glAccountRouter = require("./routes/glAccountRoute");
+const glHeadAccountRouter = require("./routes/glHeadAccountRoute");
 const inventorableLivestockAssetSeriesRouter = require("./routes/inventorableLivestockAssetSeriesRoute");
 const inventorableLivestockAssetSlotRouter = require("./routes/inventorableLivestockAssetSlotRoute");
 const livestockAssetSeriesRouter = require("./routes/livestockAssetSeriesRoute");
@@ -50,7 +50,7 @@ const salesTransactionRouter = require("./routes/SalesTransactionRoute");
 const serviceOutletRouter = require("./routes/ServiceOutletRoute");
 const staffLoanAccountRouter = require("./routes/staffLoanAccountRoute");
 const staffRewardAccountRouter = require("./routes/staffRewardAccountRoute");
-const staffSubGlAccountRouter = require("./routes/staffSubGlAccountRoute");
+const subGlAccountRouter = require("./routes/subGlHeadAccountRoute");
 const teamRouter = require("./routes/teamRoute");
 const uniqueProductAccountRouter = require("./routes/uniqueProductAccountRoute");
 const schemeCodeRoute = require("./routes/schemeCodeRoute");
@@ -58,6 +58,9 @@ const countryRoute = require("./routes/countryRoute");
 const stateRoute = require("./routes/stateRoute");
 const currencyRoute = require("./routes/currencyRoute");
 const locationRoute = require("./routes/locationRoute");
+const transactionTypeRoute = require("./routes/transactionTypeRoute");
+const officeOperationRoute = require("./routes/officeOperationRoute");
+const subsidiaryLedgerAccount = require("./routes/subsidiaryLedgerAccountsRoute");
 
 const app = express();
 
@@ -160,7 +163,7 @@ app.use(
   fixedAssetMiscellaneousAccountRouter
 );
 app.use("/api/v1/fixedassetsubglaccounts", fixedAssetSubGlAccountRouter);
-app.use("/api/v1/glaccounts", glAccountRouter);
+app.use("/api/v1/glheadaccounts", glHeadAccountRouter);
 app.use(
   "/api/v1/inventorablelivestockassetseries",
   inventorableLivestockAssetSeriesRouter
@@ -187,7 +190,7 @@ app.use("/api/v1/salesteamtasks", salesTeamTaskRouter);
 app.use("/api/v1/salestransactions", salesTransactionRouter);
 app.use("/api/v1/staffloanaccounts", staffLoanAccountRouter);
 app.use("/api/v1/staffrewardaccounts", staffRewardAccountRouter);
-app.use("/api/v1/staffsubglaccounts", staffSubGlAccountRouter);
+app.use("/api/v1/subglheadaccounts", subGlAccountRouter);
 app.use("/api/v1/teams", teamRouter);
 app.use("/api/v1/uniqueProductAccount", uniqueProductAccountRouter);
 app.use("/api/v1/schemecodes", schemeCodeRoute);
@@ -195,6 +198,9 @@ app.use("/api/v1/countries", countryRoute);
 app.use("/api/v1/states", stateRoute);
 app.use("/api/v1/currencies", currencyRoute);
 app.use("/api/v1/locations", locationRoute);
+app.use("/api/v1/transactiontypes", transactionTypeRoute);
+app.use("/api/v1/officeoperations", officeOperationRoute);
+app.use("/api/v1/subsidiaryledgers", subsidiaryLedgerAccount);
 
 //tackling unhandled routes in the application
 app.all("*", (req, res, next) => {

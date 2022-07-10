@@ -1,5 +1,5 @@
 const express = require("express");
-const GlAccountController = require("./../controllers/glAccountController");
+const SubGlHeadAccountController = require("../controllers/subGlHeadAccountController");
 const authController = require("./../controllers/authController");
 
 const router = express.Router({ mergeParams: true });
@@ -10,24 +10,24 @@ router
   .route("/")
   .get(
     authController.restrictTo("admin", "user"),
-    GlAccountController.getAllGlAccounts
+    SubGlHeadAccountController.getAllSubGlHeadAccounts
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("admin"),
     //cashAccountController.setAccountTransactionsAndUserId,
-    GlAccountController.createGlAccount
+    SubGlHeadAccountController.createSubGlHeadAccount
   );
 
 router
   .route("/:id")
   .delete(
     authController.restrictTo("user", "admin"),
-    GlAccountController.deleteGlAccount
+    SubGlHeadAccountController.deleteSubGlHeadAccount
   )
   .patch(
     authController.restrictTo("user", "admin"),
-    GlAccountController.updateGlAccount
+    SubGlHeadAccountController.updateSubGlHeadAccount
   )
-  .get(GlAccountController.getGlAccount);
+  .get(SubGlHeadAccountController.getSubGlHeadAccount);
 
 module.exports = router;

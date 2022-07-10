@@ -9,7 +9,10 @@ const locationSchema = new mongoose.Schema(
     code: {
       type: String,
       required: [true, "This field cannot be empty"],
+      minLength: 3,
+      maxLength: 4,
       unique: true,
+      
     },
     description: {
       type: String,

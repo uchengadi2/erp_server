@@ -25,7 +25,21 @@ const serviceOutletSchema = mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "City",
     },
-    createdAt: {
+    location: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Location",
+    },
+    isHeadofficeOutlet: {
+      type: Boolean,
+      default: false,
+    },
+    createdBy: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
+    dateCreated: {
       type: Date,
       default: Date.now,
     },

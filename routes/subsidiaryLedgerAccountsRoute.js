@@ -1,5 +1,5 @@
 const express = require("express");
-const ServiceOutletController = require("./../controllers/serviceOutletController");
+const SubsidiaryLedgerAccountController = require("../controllers/subsidiaryLedgerAccountsController");
 const authController = require("./../controllers/authController");
 
 const router = express.Router({ mergeParams: true });
@@ -10,23 +10,23 @@ router
   .route("/")
   .get(
     authController.restrictTo("admin", "user"),
-    ServiceOutletController.getAllServiceOutlets
+    SubsidiaryLedgerAccountController.getAllSubsidiaryLedgerAccounts
   )
   .post(
     authController.restrictTo("admin"),
-    ServiceOutletController.createServiceOutlet
+    SubsidiaryLedgerAccountController.createSubsidiaryLedgerAccount
   );
 
 router
   .route("/:id")
   .delete(
     authController.restrictTo("user", "admin"),
-    ServiceOutletController.deleteServiceOutlet
+    SubsidiaryLedgerAccountController.deleteSubsidiaryLedgerAccount
   )
   .patch(
     authController.restrictTo("user", "admin"),
-    ServiceOutletController.updateServiceOutlet
+    SubsidiaryLedgerAccountController.updateSubsidiaryLedgerAccount
   )
-  .get(ServiceOutletController.getServiceOutlet);
+  .get(SubsidiaryLedgerAccountController.getSubsidiaryLedgerAccount);
 
 module.exports = router;

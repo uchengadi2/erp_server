@@ -9,6 +9,9 @@ const countrySchema = new mongoose.Schema(
     code: {
       type: String,
       required: [false, "Please provide the country code"],
+      minLength: 3,
+      maxLength: 4,
+      unique: true,
     },
     flag: {
       type: String,
