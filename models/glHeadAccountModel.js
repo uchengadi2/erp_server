@@ -19,6 +19,11 @@ const glHeadAccountSchema = new mongoose.Schema(
         ref: "SchemeCode",
       },
     ],
+    accountClass: {
+      type: String,
+      required: [true, "Please provide the account class"],
+      enum: ["assets", "liabilities", "equity", "revenue", "expense"],
+    },
 
     description: {
       type: String,
