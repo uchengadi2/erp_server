@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
@@ -63,6 +64,10 @@ const officeOperationRoute = require("./routes/officeOperationRoute");
 const subsidiaryLedgerAccount = require("./routes/subsidiaryLedgerAccountsRoute");
 
 const app = express();
+
+//Cross Origin middleware
+app.use(cors());
+//app.use(cors({ origin: true, credentials: true }));
 
 //GLOBAL MIDDLEWARES
 
