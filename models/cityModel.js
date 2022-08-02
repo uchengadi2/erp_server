@@ -6,15 +6,35 @@ const citySchema = new mongoose.Schema(
       type: String,
       required: [true, "This field cannot be empty"],
     },
+    code: {
+      type: String,
+      required: [false, "This field cannot be empty"],
+    },
     state: [
       {
         type: mongoose.Schema.ObjectId,
         ref: "State",
       },
     ],
+    country: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "country",
+      },
+    ],
     description: {
       type: String,
       trim: true,
+    },
+    createdBy: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
+    dateCreated: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

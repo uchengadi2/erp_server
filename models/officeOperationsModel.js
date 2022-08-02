@@ -18,6 +18,16 @@ const officeOperationSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    createdBy: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
+    dateCreated: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     toJSON: { virtuals: true },

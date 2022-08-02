@@ -19,6 +19,7 @@ const glHeadAccountSchema = new mongoose.Schema(
         ref: "SchemeCode",
       },
     ],
+
     accountClass: {
       type: String,
       required: [true, "Please provide the account class"],
@@ -28,6 +29,22 @@ const glHeadAccountSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
+    },
+    createdBy: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
+    updatedBy: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+      },
+    ],
+    dateCreated: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

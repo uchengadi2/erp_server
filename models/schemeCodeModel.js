@@ -31,6 +31,8 @@ const schemeCodeSchema = new mongoose.Schema(
         "ran",
         "fld",
         "rle",
+        "asa",
+        "emc",
       ],
     },
     createdAt: {
