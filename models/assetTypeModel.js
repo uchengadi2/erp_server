@@ -6,20 +6,17 @@ const assetTypeSchema = new mongoose.Schema(
       type: String,
       required: [true, "This field cannot be empty"],
     },
-    assetSchemeType: {
-      type: String,
-      required: [true, "This field cannot be empty"],
-      enum: [
-        "charcoal",
-        "livestock",
-        "inventorable-livestock",
-        "commodity",
-        "plantation",
-      ],
+    assetSubclass: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetSubclass",
     },
     description: {
       type: String,
       trim: true,
+    },
+    code: {
+      type: String,
+      required: [true, "This field cannot be empty"],
     },
   },
   {

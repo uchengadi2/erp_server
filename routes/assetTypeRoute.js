@@ -13,8 +13,7 @@ router
     assetTypeController.getAllAssetTypes
   )
   .post(
-    authController.restrictTo("user"),
-    //assetTypeController.setAccountTransactionsAndUserId,
+    authController.restrictTo("user", "admin"),
     assetTypeController.createAssetType
   );
 

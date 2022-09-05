@@ -61,7 +61,119 @@ const currencyRoute = require("./routes/currencyRoute");
 const locationRoute = require("./routes/locationRoute");
 const transactionTypeRoute = require("./routes/transactionTypeRoute");
 const officeOperationRoute = require("./routes/officeOperationRoute");
-const subsidiaryLedgerAccount = require("./routes/subsidiaryLedgerAccountsRoute");
+const subsidiaryLedgerAccountRoute = require("./routes/subsidiaryLedgerAccountsRoute");
+const assetSubclassRoute = require("./routes/assetSubclassRoute");
+const storeTypeRoute = require("./routes/storeTypeRoute");
+const maintenanceTypeRoute = require("./routes/maintenanceTypeRoute");
+const assetMeasurementUnitRoute = require("./routes/assetMeasurementUnitRoute");
+const movementTypeRoute = require("./routes/movementTypeRoute");
+const dispostionTypeRoute = require("./routes/assetDispositionTypeRoute");
+const storeMaintenanceTypesRoute = require("./routes/storeMaintenanceTypeRoute");
+const assetRoute = require("./routes/assetRoute");
+const assetProcurementRoute = require("./routes/assetProcurementRoute");
+const assetRequisitionRoute = require("./routes/assetRequisitionRoute");
+const assetRetirementRoute = require("./routes/assetRetirementRoute");
+const assetDispositionRoute = require("./routes/assetDispositionRoute");
+const assetTransferRoute = require("./routes/assetTransferRoute");
+const assetMaintenanceRoute = require("./routes/assetMaintenanceRoute");
+const assetMovementRoute = require("./routes/assetMovementRoute");
+const storeRoute = require("./routes/storeRoute");
+const storeMaintenanceRoute = require("./routes/storeMaintenanceRoute");
+const storeLeaseRoute = require("./routes/storeLeaseRoute");
+const storeChangeOwnershipRoute = require("./routes/storeChangeOwnershipRoute");
+const storeSpaceAllocationRoute = require("./routes/storeSpaceAllocationRoute");
+const storeSellRoute = require("./routes/storeSellRoute");
+const operationProcessingTypeRoute = require("./routes/operationProcessingTypeRoute");
+const operationProcessingPhaseRoute = require("./routes/operationProcessingPhaseRoute");
+const operationProcessingPhaseEventRoute = require("./routes/operationProcessingPhaseEventRoute");
+const operationFinishingTypeRoute = require("./routes/operationFinishingTypeRoute");
+const operationQualityAssuranceTypeRoute = require("./routes/operationQualityAssuranceTypeRoute");
+const operationQualityAssurancePhaseRoute = require("./routes/operationQualityAssurancePhaseRoute");
+const operationQualityAssurancePhaseEventRoute = require("./routes/operationQualityAssurancePhaseEventRoute");
+const operationMaintenanceTypeRoute = require("./routes/operationMaintenanceTypeRoute");
+const operationOperationRoute = require("./routes/operationOperationRoute");
+const operationProcessingRoute = require("./routes/operationProcessingRoute");
+const operationProcessingMaintenanceRoute = require("./routes/operationProcessingMaintenanceRoute");
+const operationProductionMaintenanceRoute = require("./routes/operationProductionMaintenanceRoute");
+const operationProcessingQualityAssuranceRoute = require("./routes/operationProcessingQualityAssuranceRoute");
+const operationProductionQualityAssuranceRoute = require("./routes/operationProductionQualityAssuranceRoute");
+const operationProcessingFinishingRoute = require("./routes/operationProcessingFinishingRoute");
+const operationProductionFinishingRoute = require("./routes/operationProductionFinishingRoute");
+const crmContactRoute = require("./routes/crmContactRoute");
+const crmSupplierRoute = require("./routes/crmSupplierRoute");
+const crmPartnerRoute = require("./routes/crmPartnerRoute");
+const crmCustomerRoute = require("./routes/crmCustomerRoute");
+const salesProductRoute = require("./routes/salesProductRoute");
+const salesTeamRoute = require("./routes/salesTeamRoute");
+const salesTeamMemberRoute = require("./routes/salesTeamMemberRoute");
+const salesSalesRoute = require("./routes/salesSalesRoute");
+const salesInvoiceRoute = require("./routes/salesInvoiceRoute");
+const salesAccountRoute = require("./routes/salesAccountRoute");
+const projectProjectRoute = require("./routes/projectProjectRoute");
+const projectResourceRoute = require("./routes/projectResourceRoute");
+const projectBudgetRoute = require("./routes/projectBudgetRoute");
+const projectPlanningTaskRoute = require("./routes/projectPlanningTaskRoute");
+const projectPlanningActivityRoute = require("./routes/projectPlanningActivityRoute");
+const projectPlanningStepRoute = require("./routes/projectPlanningStepRoute");
+const projectPlanningSequencingRoute = require("./routes/projectPlanningSequencingRoute");
+const projectPlanningSchedulingRoute = require("./routes/projectPlanningSchedulingRoute");
+const projectMonitoringTaskRoute = require("./routes/projectMonitoringTaskRoute");
+const projectMonitoringActivityRoute = require("./routes/projectMonitoringActivityRoute");
+const projectClosureProjectRoute = require("./routes/projectClosureProjectRoute");
+const hrUnitRoute = require("./routes/hrUnitRoute");
+const hrDepartmentRoute = require("./routes/hrDepartmentRoute");
+const hrGroupRoute = require("./routes/hrGroupRoute");
+const hrDivisionRoute = require("./routes/hrDivisionRoute");
+const hrDesignationRoute = require("./routes/hrDesignationRoute");
+const hrKpiSessionRoute = require("./routes/hrKpiSessionRoute");
+const hrAppraisalSeasonRoute = require("./routes/hrAppraisalSeasonRoute");
+const hrEmolumentPeriodRoute = require("./routes/hrEmolumentPeriodRoute");
+const hrBonusRateRoute = require("./routes/hrBonusRateRoute");
+const hrOvertimeRateRoute = require("./routes/hrOvertimeRateRoute");
+const hrOrganizationLevelRoute = require("./routes/hrOrganizationLevelRoute");
+const hrSalaryGradeRoute = require("./routes/hrSalaryGradeRoute");
+const hrSalaryGradeDeductableRoute = require("./routes/hrSalaryGradeDeductableRoute");
+const hrExtraDeductableRoute = require("./routes/hrExtraDeductableRoute");
+const hrRoleRoute = require("./routes/hrRoleRoute");
+const hrJobDescriptionRoute = require("./routes/hrJobDescriptionRoute");
+const hrSkillsetRoute = require("./routes/hrSkillsetRoute");
+const hrRecruitmentInitiationRoute = require("./routes/hrRecruitmentInitiationRoute");
+const hrRecruitmentInterviewRoute = require("./routes/hrRecruitmentInterviewRoute");
+const hrRecruitmentSelectionRoute = require("./routes/hrRecruitmentSelectionRoute");
+const hrRecruitmentOnboardingRoute = require("./routes/hrRecruitmentOnboardingRoute");
+const hrRecruitmentPlacementRoute = require("./routes/hrRecruitmentPlacementRoute");
+const hrCompensationSalaryRoute = require("./routes/hrCompensationSalaryRoute");
+const hrCompensationBonusRoute = require("./routes/hrCompensationBonusRoute");
+const hrCompensationLeaveAllowanceRoute = require("./routes/hrCompensationLeaveAllowanceRoute");
+const hrCompensationOvertimeRoute = require("./routes/hrCompensationOvertimeRoute");
+const hrCompensationStaffLoanRoute = require("./routes/hrCompensationStaffLoanRoute");
+const hrCompensationSalaryAdvanceRoute = require("./routes/hrCompensationSalaryAdvanceRoute");
+const hrCompensationCertificateRefundRoute = require("./routes/hrCompensationCertificateRefundRoute");
+const hrPerformanceAppraisalRoute = require("./routes/hrPerformanceAppraisalRoute");
+const hrPerformancePerformanceRoute = require("./routes/hrPerformancePerformanceRoute");
+const hrLeavesLeavesRoute = require("./routes/hrLeavesLeavesRoute");
+const hrExitExitRoute = require("./routes/hrExitExitRoute");
+const hrExitClearanceRoute = require("./routes/hrExitClearanceRoute");
+const hrSelfServiceLeaveRoute = require("./routes/hrSelfServiceLeaveRoute");
+const hrSelfServiceStaffLoanRoute = require("./routes/hrSelfServiceStaffLoanRoute");
+const hrSelfServiceCertificateRefundRoute = require("./routes/hrSelfServiceCertificateRefundRoute");
+const hrSelfServiceExitRoute = require("./routes/hrSelfServiceExitRoute");
+const hrSelfServiceOvertimeRoute = require("./routes/hrSelfServiceOvertimeRoute");
+const hrSelfServiceSalaryAdvanceRoute = require("./routes/hrSelfServiceSalaryAdvanceRoute");
+const hrSelfServiceAppraisalRoute = require("./routes/hrSelfServiceAppraisalRoute");
+const hrSelfServicePayslipRoute = require("./routes/hrSelfServicePayslipRoute");
+const accountLedgerAssetSubLedgerRoute = require("./routes/accountLedgerAssetSubLedgerRoute");
+const accountLedgerStockSubLedgerRoute = require("./routes/accountLedgerStockSubLedgerRoute");
+const accountLedgerStaffSubLedgerRoute = require("./routes/accountLedgerStaffSubLedgerRoute");
+const accountLedgerPartnerSubLedgerRoute = require("./routes/accountLedgerPartnerSubLedgerRoute");
+const accountLedgerVendorSubLedgerRoute = require("./routes/accountLedgerVendorSubLedgerRoute");
+const accountLedgerCustomerSubLedgerRoute = require("./routes/accountLedgerCustomerSubLedgerRoute");
+const accountLedgerSupplierSubLedgerRoute = require("./routes/accountLedgerSupplierSubLedgerRoute");
+const accountLedgerOfficeSubLedgerRoute = require("./routes/accountLedgerOfficeSubLedgerRoute");
+const accountLedgerProductSubLedgerRoute = require("./routes/accountLedgerProductSubLedgerRoute");
+const assetStockRoute = require("./routes/assetStockRoute");
+const assetSetRoute = require("./routes/assetSetRoute");
+const assetSetBatchRoute = require("./routes/assetSetBatchRoute");
 
 const app = express();
 
@@ -205,7 +317,202 @@ app.use("/api/v1/currencies", currencyRoute);
 app.use("/api/v1/locations", locationRoute);
 app.use("/api/v1/transactiontypes", transactionTypeRoute);
 app.use("/api/v1/officeoperations", officeOperationRoute);
-app.use("/api/v1/subsidiaryledgers", subsidiaryLedgerAccount);
+app.use("/api/v1/subsidiaryledgers", subsidiaryLedgerAccountRoute);
+app.use("/api/v1/assetsubclasses", assetSubclassRoute);
+app.use("/api/v1/storetypes", storeTypeRoute);
+app.use("/api/v1/maintenancetypes", maintenanceTypeRoute);
+app.use("/api/v1/assetmeasurementunits", assetMeasurementUnitRoute);
+app.use("/api/v1/movementtypes", movementTypeRoute);
+app.use("/api/v1/dispositiontypes", dispostionTypeRoute);
+app.use("/api/v1/storemaintenancetypes", storeMaintenanceTypesRoute);
+app.use("/api/v1/assets", assetRoute);
+app.use("/api/v1/assetprocurements", assetProcurementRoute);
+app.use("/api/v1/assetrequisitions", assetRequisitionRoute);
+app.use("/api/v1/assetretirements", assetRetirementRoute);
+app.use("/api/v1/assetdispositions", assetDispositionRoute);
+app.use("/api/v1/assettransfers", assetTransferRoute);
+app.use("/api/v1/assetmaintenances", assetMaintenanceRoute);
+app.use("/api/v1/assetmovements", assetMovementRoute);
+app.use("/api/v1/stores", storeRoute);
+app.use("/api/v1/storemaintenances", storeMaintenanceRoute);
+app.use("/api/v1/storeleases", storeLeaseRoute);
+app.use("/api/v1/storechangeownerships", storeChangeOwnershipRoute);
+app.use("/api/v1/storespaceallocations", storeSpaceAllocationRoute);
+app.use("/api/v1/storesales", storeSellRoute);
+app.use("/api/v1/operationprocessingtypes", operationProcessingTypeRoute);
+app.use("/api/v1/operationprocessingphases", operationProcessingPhaseRoute);
+app.use(
+  "/api/v1/operationprocessingphaseevents",
+  operationProcessingPhaseEventRoute
+);
+
+app.use("/api/v1/operationfinishingtypes", operationFinishingTypeRoute);
+app.use(
+  "/api/v1/operationqualityassurancetypes",
+  operationQualityAssuranceTypeRoute
+);
+app.use(
+  "/api/v1/operationqualityassurancephases",
+  operationQualityAssurancePhaseRoute
+);
+app.use(
+  "/api/v1/operationqualityassurancephaseevents",
+  operationQualityAssurancePhaseEventRoute
+);
+app.use("/api/v1/operationmaintenancetypes", operationMaintenanceTypeRoute);
+
+app.use("/api/v1/operationoperations", operationOperationRoute);
+app.use("/api/v1/operationprocessings", operationProcessingRoute);
+app.use(
+  "/api/v1/operationprocessingmaintenances",
+  operationProcessingMaintenanceRoute
+);
+app.use(
+  "/api/v1/operationproductionmaintenances",
+  operationProductionMaintenanceRoute
+);
+app.use(
+  "/api/v1/operationprocessingqualityassurances",
+  operationProcessingQualityAssuranceRoute
+);
+app.use(
+  "/api/v1/operationproductionqualityassurances",
+  operationProductionQualityAssuranceRoute
+);
+app.use(
+  "/api/v1/operationprocessingfinishings",
+  operationProcessingFinishingRoute
+);
+app.use(
+  "/api/v1/operationproductionfinishings",
+  operationProductionFinishingRoute
+);
+
+app.use("/api/v1/crmcontacts", crmContactRoute);
+
+app.use("/api/v1/crmsuppliers", crmSupplierRoute);
+app.use("/api/v1/crmpartners", crmPartnerRoute);
+app.use("/api/v1/crmcustomers", crmCustomerRoute);
+app.use("/api/v1/salesproducts", salesProductRoute);
+app.use("/api/v1/salesteams", salesTeamRoute);
+app.use("/api/v1/salesteammembers", salesTeamMemberRoute);
+app.use("/api/v1/sales", salesSalesRoute);
+app.use("/api/v1/salesinvoices", salesInvoiceRoute);
+app.use("/api/v1/salesaccounts", salesAccountRoute);
+app.use("/api/v1/projects", projectProjectRoute);
+app.use("/api/v1/projectresources", projectResourceRoute);
+app.use("/api/v1/projectbudgets", projectBudgetRoute);
+app.use("/api/v1/projectplanningtasks", projectPlanningTaskRoute);
+app.use("/api/v1/projectplanningactivities", projectPlanningActivityRoute);
+app.use("/api/v1/projectplanningsteps", projectPlanningStepRoute);
+app.use("/api/v1/projectplanningsequencings", projectPlanningSequencingRoute);
+app.use("/api/v1/projectplanningschedulings", projectPlanningSchedulingRoute);
+app.use("/api/v1/projectmonitoringtasks", projectMonitoringTaskRoute);
+app.use("/api/v1/projectmonitoringactivities", projectMonitoringActivityRoute);
+app.use("/api/v1/projectclosures", projectClosureProjectRoute);
+app.use("/api/v1/hrunits", hrUnitRoute);
+app.use("/api/v1/hrdepartments", hrDepartmentRoute);
+app.use("/api/v1/hrgroups", hrGroupRoute);
+app.use("/api/v1/hrdivisions", hrDivisionRoute);
+app.use("/api/v1/hrdesignations", hrDesignationRoute);
+app.use("/api/v1/hrkpisessions", hrKpiSessionRoute);
+app.use("/api/v1/hrappraisalseasons", hrAppraisalSeasonRoute);
+app.use("/api/v1/hremolumentperiods", hrEmolumentPeriodRoute);
+app.use("/api/v1/hrbonusrates", hrBonusRateRoute);
+app.use("/api/v1/hrovertimerates", hrOvertimeRateRoute);
+app.use("/api/v1/hrorganizationlevels", hrOrganizationLevelRoute);
+
+app.use("/api/v1/hrsalarygrades", hrSalaryGradeRoute);
+app.use("/api/v1/hrsalarygradedeductables", hrSalaryGradeDeductableRoute);
+app.use("/api/v1/hrextradeductables", hrExtraDeductableRoute);
+
+app.use("/api/v1/hrroles", hrRoleRoute);
+
+app.use("/api/v1/hrjobdescriptions", hrJobDescriptionRoute);
+
+app.use("/api/v1/hrskillsets", hrSkillsetRoute);
+app.use("/api/v1/hrrecruitmentinitiations", hrRecruitmentInitiationRoute);
+app.use("/api/v1/hrrecruitmentinterviews", hrRecruitmentInterviewRoute);
+app.use("/api/v1/hrrecruitmentselections", hrRecruitmentSelectionRoute);
+app.use("/api/v1/hrrecruitmentonboarding", hrRecruitmentOnboardingRoute);
+app.use("/api/v1/hrrecruitmentplacements", hrRecruitmentPlacementRoute);
+app.use("/api/v1/hrcompensationsalaries", hrCompensationSalaryRoute);
+app.use("/api/v1/hrcompensationbonuses", hrCompensationBonusRoute);
+app.use(
+  "/api/v1/hrcompensationleaveallowances",
+  hrCompensationLeaveAllowanceRoute
+);
+app.use("/api/v1/hrcompensationovertimes", hrCompensationOvertimeRoute);
+
+app.use("/api/v1/hrcompensationstaffloans", hrCompensationStaffLoanRoute);
+app.use(
+  "/api/v1/hrcompensationsalaryadvances",
+  hrCompensationSalaryAdvanceRoute
+);
+app.use(
+  "/api/v1/hrcompensationcertificaterefunds",
+  hrCompensationCertificateRefundRoute
+);
+app.use("/api/v1/hrperformanceappraisals", hrPerformanceAppraisalRoute);
+app.use("/api/v1/hrperformanceperformances", hrPerformancePerformanceRoute);
+app.use("/api/v1/hrleavesleaves", hrLeavesLeavesRoute);
+app.use("/api/v1/hrexitexits", hrExitExitRoute);
+app.use("/api/v1/hrexitclearances", hrExitClearanceRoute);
+app.use("/api/v1/hrselfserviceleaves", hrSelfServiceLeaveRoute);
+app.use("/api/v1/hrselfservicestaffloans", hrSelfServiceStaffLoanRoute);
+app.use(
+  "/api/v1/hrselfservicecertificaterefunds",
+  hrSelfServiceCertificateRefundRoute
+);
+app.use("/api/v1/hrselfserviceexits", hrSelfServiceExitRoute);
+app.use("/api/v1/hrselfserviceovertimes", hrSelfServiceOvertimeRoute);
+app.use("/api/v1/hrselfservicesalaryadvances", hrSelfServiceSalaryAdvanceRoute);
+app.use("/api/v1/hrselfserviceappraisals", hrSelfServiceAppraisalRoute);
+app.use("/api/v1/hrselfservicepayslips", hrSelfServicePayslipRoute);
+app.use(
+  "/api/v1/accountledgerassetsubledgers",
+  accountLedgerAssetSubLedgerRoute
+);
+
+app.use(
+  "/api/v1/accountledgerstocksubledgers",
+  accountLedgerStockSubLedgerRoute
+);
+app.use(
+  "/api/v1/accountledgerstaffsubledgers",
+  accountLedgerStaffSubLedgerRoute
+);
+app.use(
+  "/api/v1/accountledgerpartnersubledgers",
+  accountLedgerPartnerSubLedgerRoute
+);
+
+app.use(
+  "/api/v1/accountledgervendorsubledgers",
+  accountLedgerVendorSubLedgerRoute
+);
+
+app.use(
+  "/api/v1/accountledgercustomersubledgers",
+  accountLedgerCustomerSubLedgerRoute
+);
+
+app.use(
+  "/api/v1/accountledgersuppliersubledgers",
+  accountLedgerSupplierSubLedgerRoute
+);
+app.use(
+  "/api/v1/accountledgerofficesubledgers",
+  accountLedgerOfficeSubLedgerRoute
+);
+
+app.use(
+  "/api/v1/accountledgerproductsubledgers",
+  accountLedgerProductSubLedgerRoute
+);
+app.use("/api/v1/assetstocks", assetStockRoute);
+app.use("/api/v1/assetsets", assetSetRoute);
+app.use("/api/v1/assetsetbatches", assetSetBatchRoute);
 
 //tackling unhandled routes in the application
 app.all("*", (req, res, next) => {
