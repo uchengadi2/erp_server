@@ -13,7 +13,7 @@ router
     assetMaintenanceController.getAllAssetMaintenances
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     assetMaintenanceController.createAssetMaintenance
   );
 

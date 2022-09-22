@@ -13,7 +13,7 @@ router
     assetRequisitionController.getAllAssetRequisitions
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user","admin"),
     assetRequisitionController.createAssetRequisition
   );
 

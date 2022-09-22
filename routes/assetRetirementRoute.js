@@ -13,7 +13,7 @@ router
     assetRetirementController.getAllAssetRetirements
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     assetRetirementController.createAssetRetirement
   );
 

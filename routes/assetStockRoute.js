@@ -13,7 +13,7 @@ router
     assetStockController.getAllAssetStocks
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     assetStockController.createAssetStock
   );
 

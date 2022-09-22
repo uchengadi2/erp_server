@@ -53,9 +53,6 @@ const assetSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    assetRefNumber: {
-      type: String,
-    },
     quantity: {
       type: Number,
     },
@@ -88,6 +85,9 @@ const assetSchema = new mongoose.Schema(
       origin: {
         type: String,
       },
+      variant: {
+        type: String,
+      },
     },
     livestock: {
       breed: {
@@ -105,7 +105,6 @@ const assetSchema = new mongoose.Schema(
       healthStatusOnArrival: {
         type: String,
         enum: ["healthy", "sickly", "unVerified"],
-        default: "healthy",
       },
       physicalHealthOnArrival: {
         type: String,
@@ -116,13 +115,33 @@ const assetSchema = new mongoose.Schema(
           "withHeadInjuries",
           "withBothBodyAndHeadInjuries",
         ],
-        default: "healthy",
       },
       origin: {
         type: String,
       },
       gender: {
         type: String,
+        enum: ["male", "female", "unVerified"],
+      },
+      variant: {
+        type: String,
+      },
+      type: {
+        type: String,
+        enum: [
+          "cow",
+          "ewe",
+          "goat",
+          "fish",
+          "pig",
+          "piglet",
+          "fries",
+          "chicks",
+          "rabbit",
+          "sheep",
+          "kid",
+          "calf",
+        ],
       },
     },
     plant: {
@@ -138,6 +157,9 @@ const assetSchema = new mongoose.Schema(
       breed: {
         type: String,
       },
+      variant: {
+        type: String,
+      },
     },
     commodity: {
       breed: {
@@ -149,11 +171,26 @@ const assetSchema = new mongoose.Schema(
       origin: {
         type: String,
       },
-      averageWeight: {
+      averageWeightInKg: {
         type: Number,
       },
-      type: String,
-      enum: ["rice", "beans", "soyabeans", "cotton", "wheat", "maize", "cocoa"],
+      type: {
+        type: String,
+        enum: [
+          "rice",
+          "beans",
+          "soyabeans",
+          "cotton",
+          "wheat",
+          "maize",
+          "cocoa",
+          "cashewnut",
+          "coffee",
+        ],
+      },
+      variant: {
+        type: String,
+      },
     },
     otherStock: {},
     otherNonStock: {},

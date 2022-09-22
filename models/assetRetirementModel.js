@@ -2,21 +2,61 @@ const mongoose = require("mongoose");
 
 const assetRetirementSchema = new mongoose.Schema(
   {
+    label: {
+      type: String,
+    },
+    retirementRefNumber: {
+      type: String,
+      unique: true,
+    },
     purpose: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      trim: true,
+    },
+    quantity: {
+      type: Number,
+    },
+    assetMeasurementUnit: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetMeasurementUnit",
     },
     assetType: {
       type: mongoose.Schema.ObjectId,
       ref: "AssetType",
     },
-    asset: {
+    assetStock: {
       type: mongoose.Schema.ObjectId,
-      ref: "Asset",
+      ref: "AssetStock",
+    },
+    store: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Store",
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
     },
     description: {
       type: String,
       trim: true,
+    },
+    retirementDate: {
+      type: Date,
+    },
+    totalRetirementCost: {
+      type: Number,
+    },
+    currency: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Currency",
+    },
+    createdBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    dateCreated: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

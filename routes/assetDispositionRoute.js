@@ -13,7 +13,7 @@ router
     assetDispositionController.getAllAssetDispositions
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user","admin"),
     assetDispositionController.createAssetDisposition
   );
 

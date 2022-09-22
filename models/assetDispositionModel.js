@@ -2,21 +2,65 @@ const mongoose = require("mongoose");
 
 const assetDispositionSchema = new mongoose.Schema(
   {
+    label: {
+      type: String,
+    },
+    dispositionRefNumber: {
+      type: String,
+      unique: true,
+    },
     purpose: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      trim: true,
+    },
+    quantity: {
+      type: Number,
+    },
+    assetMeasurementUnit: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetMeasurementUnit",
+    },
+    dispositionType: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetDispositionType",
     },
     assetType: {
       type: mongoose.Schema.ObjectId,
       ref: "AssetType",
     },
-    asset: {
+    assetStock: {
       type: mongoose.Schema.ObjectId,
-      ref: "Asset",
+      ref: "AssetStock",
+    },
+    store: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Store",
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
     },
     description: {
       type: String,
       trim: true,
+    },
+    dispositionDate: {
+      type: Date,
+    },
+    totalDispositionCost: {
+      type: Number,
+    },
+    currency: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Currency",
+    },
+    createdBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    dateCreated: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

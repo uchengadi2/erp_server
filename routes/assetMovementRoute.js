@@ -13,7 +13,7 @@ router
     assetMovementController.getAllAssetMovements
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     assetMovementController.createAssetMovement
   );
 

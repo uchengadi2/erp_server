@@ -10,6 +10,10 @@ const assetSetSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "AssetType",
     },
+    assetProcurement: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetProcurement",
+    },
     description: {
       type: String,
       trim: true,

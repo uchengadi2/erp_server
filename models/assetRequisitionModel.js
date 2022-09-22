@@ -2,21 +2,66 @@ const mongoose = require("mongoose");
 
 const assetRequisitionSchema = new mongoose.Schema(
   {
+    label: {
+      type: String,
+    },
+    requisitionRefNumber: {
+      type: String,
+      unique: true,
+    },
     purpose: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      trim: true,
+    },
+    // initialStockQuantity: {
+    //   type: Number,
+    // },
+    quantity: {
+      type: Number,
+    },
+
+    assetMeasurementUnit: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetMeasurementUnit",
     },
     assetType: {
       type: mongoose.Schema.ObjectId,
       ref: "AssetType",
     },
-    asset: {
+    assetStock: {
       type: mongoose.Schema.ObjectId,
-      ref: "Asset",
+      ref: "AssetStock",
+    },
+    store: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Store",
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
     },
     description: {
       type: String,
       trim: true,
+    },
+    requisitionDate: {
+      type: Date,
+    },
+
+    totalRequisitionCost: {
+      type: Number,
+    },
+    currency: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Currency",
+    },
+    createdBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    dateCreated: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

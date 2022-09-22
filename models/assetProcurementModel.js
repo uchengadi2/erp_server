@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const assetProcurementSchema = new mongoose.Schema(
   {
-    name: {
+    procurementItem: {
       type: String,
       required: [true, "This field cannot be empty"],
     },
@@ -10,9 +10,38 @@ const assetProcurementSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "AssetType",
     },
-    asset: {
+    quantity: {
+      type: Number,
+      required: [true, "This field cannot be empty"],
+    },
+    totalCostOfProcurement: {
+      type: Number,
+    },
+    currency: {
       type: mongoose.Schema.ObjectId,
-      ref: "Asset",
+      ref: "Currency",
+    },
+    assetMeasurementUnit: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetMeasurementUnit",
+    },
+    supplier: {
+      type: mongoose.Schema.ObjectId,
+      ref: "CrmSupplier",
+    },
+    procurementDate: {
+      type: Date,
+    },
+    procurementRefNumber: {
+      type: String,
+      unique: true,
+    },
+    remainingQuantityForAllocation: {
+      type: Number,
+    },
+    procuredBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
     description: {
       type: String,
