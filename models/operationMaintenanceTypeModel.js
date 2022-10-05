@@ -4,12 +4,16 @@ const operationMaintenanceTypeSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      required: [false, "This field cannot be empty"],
     },
-    operationProcessingType: {
+    refNumber: {
+      type: String,
+    },
+    processingType: {
       type: mongoose.Schema.ObjectId,
-      ref: "operationProcessingType",
+      ref: "OperationProcessingType",
     },
+
     description: {
       type: String,
       trim: true,

@@ -6,6 +6,13 @@ const operationQualityAssuranceTypeSchema = new mongoose.Schema(
       type: String,
       required: [true, "This field cannot be empty"],
     },
+    refNumber: {
+      type: String,
+    },
+    processingType: {
+      type: mongoose.Schema.ObjectId,
+      ref: "OperationProcessingType",
+    },
 
     description: {
       type: String,

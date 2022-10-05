@@ -13,7 +13,7 @@ router
     ProjectPlanningActivityController.getAllProjectPlanningActivities
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     ProjectPlanningActivityController.createProjectPlanningActivity
   );
 

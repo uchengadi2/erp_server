@@ -13,7 +13,7 @@ router
     operationMaintenanceTypeController.getAllOperationMaintenanceTypes
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     operationMaintenanceTypeController.createOperationMaintenanceType
   );
 

@@ -13,7 +13,7 @@ router
     operationQualityAssuranceTypeController.getAllOperationQualityAssuranceTypes
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     operationQualityAssuranceTypeController.createOperationQualityAssuranceType
   );
 

@@ -13,7 +13,7 @@ router
     ProjectClosureProjectController.getAllProjectClosures
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     ProjectClosureProjectController.createProjectClosure
   );
 

@@ -13,7 +13,7 @@ router
     ProjectProjectController.getAllProjects
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     ProjectProjectController.createProject
   );
 

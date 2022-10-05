@@ -2,9 +2,49 @@ const mongoose = require("mongoose");
 
 const projectPlanningTaskSchema = new mongoose.Schema(
   {
-    name: {
+    task: {
       type: String,
       required: [true, "This field cannot be empty"],
+    },
+    refNumber: {
+      type: String,
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
+    },
+    project: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ProjectProject",
+    },
+    startDate: {
+      type: Date,
+    },
+    endDate: {
+      type: Date,
+    },
+    status: {
+      type: String,
+      default: "pending",
+      enum: [
+        "pending",
+        "in-progress",
+        "suspended",
+        "completed",
+        "waived",
+        "dropped",
+      ],
+    },
+    expectedOutcome: {
+      type: String,
+      trim: true,
+    },
+    actualOutcome: {
+      type: String,
+      trim: true,
+    },
+    dateLastModified: {
+      type: Date,
     },
     description: {
       type: String,

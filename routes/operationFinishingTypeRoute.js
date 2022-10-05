@@ -1,4 +1,3 @@
-
 const express = require("express");
 const operationFinishingTypeController = require("./../controllers/operationFinishingTypeController");
 const authController = require("./../controllers/authController");
@@ -14,7 +13,7 @@ router
     operationFinishingTypeController.getAllOperationFinishingTypes
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     operationFinishingTypeController.createOperationFinishingType
   );
 

@@ -13,7 +13,7 @@ router
     operationProductionQualityAssuranceController.getAllOperationProductionQualityAssurances
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     operationProductionQualityAssuranceController.createOperationProductionQualityAssurance
   );
 

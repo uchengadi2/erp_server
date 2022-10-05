@@ -2,13 +2,31 @@ const mongoose = require("mongoose");
 
 const projectClosureProjectSchema = new mongoose.Schema(
   {
-    name: {
+    label: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      required: [false, "This field cannot be empty"],
+    },
+    refNumber: {
+      type: String,
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
+    },
+    project: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ProjectProject",
+    },
+    dateClosed: {
+      type: Date,
     },
     description: {
       type: String,
       trim: true,
+    },
+    closedBy: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
   },
   {

@@ -13,7 +13,7 @@ router
     operationProcessingController.getAllOperationProcessings
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user","admin"),
     operationProcessingController.createOperationProcessing
   );
 

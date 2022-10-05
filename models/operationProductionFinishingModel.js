@@ -2,17 +2,56 @@ const mongoose = require("mongoose");
 
 const operationProductionFinishingSchema = new mongoose.Schema(
   {
-    name: {
+    label: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      required: [false, "This field cannot be empty"],
     },
-    operationFinishingType: {
+    refNumber: {
+      type: String,
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
+    },
+    operation: {
+      type: mongoose.Schema.ObjectId,
+      ref: "OperationOperation",
+    },
+    finishingType: {
       type: mongoose.Schema.ObjectId,
       ref: "OperationFinishingType",
+    },
+
+    finishingDate: {
+      type: Date,
+    },
+
+    status: {
+      type: String,
+      enum: ["in-progress", "suspended", "completed", "waived"],
+    },
+    comment: {
+      type: String,
+      trim: true,
+    },
+    dateLastModified: {
+      type: Date,
+      default: Date.now,
+    },
+    output: {
+      type: String,
+      trim: true,
     },
     description: {
       type: String,
       trim: true,
+    },
+    finishingCost: {
+      type: Number,
+    },
+    currency: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Currency",
     },
   },
   {

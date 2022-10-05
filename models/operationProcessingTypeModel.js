@@ -4,7 +4,10 @@ const operationProcessingTypeSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "This field cannot be empty"],
+      required: [false, "This field cannot be empty"],
+    },
+    refNumber: {
+      type: String,
     },
 
     description: {
@@ -18,9 +21,9 @@ const operationProcessingTypeSchema = new mongoose.Schema(
   }
 );
 
-const operationProcessingType = mongoose.model(
-  "operationProcessingType",
+const OperationProcessingType = mongoose.model(
+  "OperationProcessingType",
   operationProcessingTypeSchema
 );
 
-module.exports = operationProcessingType;
+module.exports = OperationProcessingType;

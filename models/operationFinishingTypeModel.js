@@ -6,6 +6,9 @@ const operationFinishingTypeSchema = new mongoose.Schema(
       type: String,
       required: [true, "This field cannot be empty"],
     },
+    refNumber: {
+      type: String,
+    },
     description: {
       type: String,
       trim: true,

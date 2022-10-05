@@ -13,7 +13,7 @@ router
     OperationProductionFinishingController.getAllOperationProductionFinishings
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     OperationProductionFinishingController.createOperationProductionFinishing
   );
 

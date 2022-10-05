@@ -13,7 +13,7 @@ router
     ProjectResourceController.getAllProjectResources
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     ProjectResourceController.createProjectResource
   );
 
