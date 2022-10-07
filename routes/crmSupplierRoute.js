@@ -13,7 +13,7 @@ router
     CrmSupplierController.getAllCrmSuppliers
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     CrmSupplierController.createCrmSupplier
   );
 

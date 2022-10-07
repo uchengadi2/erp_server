@@ -13,7 +13,7 @@ router
     CrmContactController.getAllCrmContacts
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user", "admin"),
     CrmContactController.createCrmContact
   );
 

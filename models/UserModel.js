@@ -3,56 +3,63 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please tell us your name}"],
-  },
-  email: {
-    type: String,
-    required: [true, "Please provide your email"],
-    unique: true,
-    lowercase: true,
-    validate: [validator.isEmail, "Please provide a valid email"],
-  },
-  photo: String,
-  role: {
-    type: String,
-    enum: ["user", "guide", "lead-guide", "admin"],
-    default: "user",
-  },
-  password: {
-    type: String,
-    required: [true, "Provide a password"],
-    minLength: 8,
-    select: false,
-  },
-  passwordConfirm: {
-    type: String,
-    required: [false, "Please confirm your password"],
-    //this only works on save or create
-    validate: {
-      validator: function (el) {
-        return el === this.password;
-      },
-      message: "Password are not the same",
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Please tell us your name}"],
     },
-  },
-  userType: {
-    type: String,
-    enum: ["staff", "customer", "partner", "supplier", "vendor"],
-  },
-  passwordChangedAt: Date,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-  active: {
-    type: Boolean,
-    default: true,
-    select: false,
-  },
-  staffUserDetail: {
+    email: {
+      type: String,
+      required: [true, "Please provide your email"],
+      unique: true,
+      lowercase: true,
+      validate: [validator.isEmail, "Please provide a valid email"],
+    },
+    photo: String,
+    role: {
+      type: String,
+      enum: ["user", "guide", "lead-guide", "admin"],
+      default: "user",
+    },
+    password: {
+      type: String,
+      required: [true, "Provide a password"],
+      minLength: 8,
+      select: false,
+    },
+    passwordConfirm: {
+      type: String,
+      required: [false, "Please confirm your password"],
+      //this only works on save or create
+      validate: {
+        validator: function (el) {
+          return el === this.password;
+        },
+        message: "Password are not the same",
+      },
+    },
+    userType: {
+      type: String,
+      enum: ["staff", "customer", "partner", "supplier", "vendor"],
+    },
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
+    active: {
+      type: Boolean,
+      default: true,
+      select: false,
+    },
     staffNumber: {
       type: String,
+    },
+    phoneNumbers: {
+      type: String,
+    },
+    serviceOutlet: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ServiceOutlet",
     },
     gender: {
       type: String,
@@ -65,90 +72,84 @@ const userSchema = new mongoose.Schema({
     dateOfBirth: {
       type: Date,
     },
+    memo: {
+      type: String,
+      trim: true,
+    },
     highestLevelOfEducationAttained: {
       type: String,
       enum: [
-        "PhD",
-        "Masters",
-        "Bachelors",
-        "Higher Diploma",
-        "Diploma",
-        "OLevel",
-        "Others",
+        "phd",
+        "masters",
+        "bachelors",
+        "higher-diploma",
+        "diploma",
+        "oLevel",
+        "others",
       ],
     },
     courseOfStudy: {
       type: String,
       trim: true,
     },
-    references: [String],
-    yearsOfExperience: {
-      type: Number,
-    },
     houseAddress: {
       type: String,
     },
-    nextOfKin: {
-      name: {
-        type: String,
-      },
-      address: {
-        type: String,
-      },
-      relationship: {
-        type: String,
-        enum: [
-          "sibling",
-          "uncle",
-          "aunt",
-          "spouse",
-          "friend",
-          "parent",
-          "others",
-        ],
-      },
+    references: {
+      type: String,
     },
-    guarantor: [
-      {
-        name: {
-          type: String,
-        },
-        address: {
-          type: String,
-          trim: true,
-        },
-        gender: {
-          type: String,
-          enum: ["male", "female"],
-        },
-        relationship: {
-          type: String,
-          enum: [
-            "sibling",
-            "uncle",
-            "aunt",
-            "spouse",
-            "friend",
-            "parent",
-            "others",
-          ],
-        },
-      },
-    ],
-    currentServiceOutlet: {
-      type: mongoose.Schema.ObjectId,
-      ref: "ServiceOutlet",
+    nextOfKinName: {
+      type: String,
     },
-    servedServiceOutlets: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "ServiceOutlet",
-      },
-    ],
+    nextOfKinAddress: {
+      type: String,
+    },
+    nextOfKinPhoneNumbers: {
+      type: String,
+    },
+    nextOfKinRelationship: {
+      type: String,
+      enum: [
+        "sibling",
+        "uncle",
+        "aunt",
+        "spouse",
+        "friend",
+        "parent",
+        "others",
+      ],
+    },
+    guarantorName: {
+      type: String,
+    },
+    guarantorPhoneNumbers: {
+      type: String,
+    },
+    guarantorAddress: {
+      type: String,
+    },
+    guarantorGender: {
+      type: String,
+      enum: ["male", "female"],
+    },
+    guarantorRelationship: {
+      type: String,
+      enum: [
+        "sibling",
+        "uncle",
+        "aunt",
+        "spouse",
+        "friend",
+        "parent",
+        "others",
+      ],
+    },
   },
-  customerDetails: {},
-  partnerDetails: {},
-});
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
 userSchema.pre("save", async function (next) {
   //only run this function if password is actually modified
@@ -201,7 +202,7 @@ userSchema.methods.createPasswordResetToken = function () {
     .update(resetToken)
     .digest("hex");
 
-  console.log({ resetToken }, this.passwordResetToken);
+ // console.log({ resetToken }, this.passwordResetToken);
 
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
@@ -211,133 +212,3 @@ userSchema.methods.createPasswordResetToken = function () {
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-
-////////////////////////////////////////////////////
-
-// const crypto = require("crypto");
-// const mongoose = require("mongoose");
-// const validator = require("validator");
-// const bcrypt = require("bcryptjs");
-
-// const userSchema = new mongoose.Schema(
-//   {
-//     name: {
-//       type: String,
-//       required: [true, "Please provide the name of this use"],
-//     },
-//     email: {
-//       type: String,
-//       required: [true, "Please the email of this user"],
-//       unique: true,
-//       lowercase: true,
-//       validate: [validator.isEmail, "Please provide email"],
-//     },
-//     photo: { type: String, default: "default.jpg" },
-//     role: {
-//       type: String,
-//       default: "user",
-//       enum: ["user", "partner", "admin", "partner_admin", "customer"],
-//     },
-//     password: {
-//       type: String,
-//       required: [true, "Please provide a password"],
-//       minLength: 8,
-//       select: false,
-//     },
-//     passwordConfirm: {
-//       type: String,
-//       required: [false, "Please confirm your password"],
-//       validate: {
-//         validator: function (el) {
-//           return el === this.password;
-//         },
-//         message: "Password are not the same",
-//       },
-//     },
-//     passwordChangedAt: Date,
-//     passwordResetToken: String,
-//     passwordResetExpiresAt: Date,
-//     active: {
-//       type: Boolean,
-//       default: true,
-//       select: false,
-//     },
-//     type: {
-//       type: String,
-//       default: "staff",
-//       enum: ["staff", "customer", "partner"],
-//     },
-//     vendor: [
-//       {
-//         type: mongoose.Schema.ObjectId,
-//         ref: "Vendor",
-//       },
-//     ],
-//   },
-//   {
-//     toJSON: { virtuals: true },
-//     toObject: { virtuals: true },
-//   }
-// );
-
-// userSchema.pre("save", async function (next) {
-//   //only run this function if password is actually modified
-//   if (!this.isModified("password")) return next();
-//   //hash the password with the cost of 12
-//   this.password = await bcrypt.hash(this.password, 12);
-
-//   //delete the passwordConfirm field
-//   this.passwordConfirm = undefined;
-//   next();
-// });
-
-// userSchema.pre("save", function (next) {
-//   if (!this.isModified("password") || this.isNew) return next();
-//   this.passwordChangedAt = Date.now() - 1000;
-//   next();
-// });
-
-// //create an instance function
-// userSchema.methods.correctPassword = async function (
-//   candidatePassword,
-//   userPassword
-// ) {
-//   return await bcrypt.compare(candidatePassword, userPassword);
-// };
-
-// userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
-//   if (this.passwordChangedAt) {
-//     const changedTimeStamp = parseInt(
-//       this.passwordChangedAt.getTime() / 1000,
-//       10
-//     );
-//     return JWTTimestamp < changedTimeStamp;
-//   }
-
-//   return false;
-// };
-
-// userSchema.pre(/^find/, function (next) {
-//   //this points to the current query
-//   this.find({ active: { $ne: false } });
-//   next();
-// });
-
-// userSchema.methods.createPasswordResetToken = function () {
-//   const resetToken = crypto.randomBytes(32).toString("hex");
-//   //encrypt this reset token
-//   this.passwordResetToken = crypto
-//     .createHash("sha256")
-//     .update(resetToken)
-//     .digest("hex");
-
-//   console.log({ resetToken }, this.passwordResetToken);
-
-//   //this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-//   this.passwordResetExpiresAt = Date.now() + 10 * 60 * 1000;
-
-//   return resetToken;
-// };
-
-// const User = mongoose.model("User", userSchema);
-// module.exports = User;

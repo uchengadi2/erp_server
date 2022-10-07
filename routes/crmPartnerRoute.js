@@ -13,7 +13,7 @@ router
     CrmPartnerController.getAllCrmPartners
   )
   .post(
-    authController.restrictTo("user"),
+    authController.restrictTo("user","admin"),
     CrmPartnerController.createCrmPartner
   );
 
