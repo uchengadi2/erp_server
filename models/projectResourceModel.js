@@ -13,6 +13,10 @@ const projectResourceSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "ServiceOutlet",
     },
+    project: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ProjectProject",
+    },
     assetType: {
       type: mongoose.Schema.ObjectId,
       ref: "AssetType",
