@@ -174,6 +174,9 @@ const accountLedgerProductSubLedgerRoute = require("./routes/accountLedgerProduc
 const assetStockRoute = require("./routes/assetStockRoute");
 const assetSetRoute = require("./routes/assetSetRoute");
 const assetSetBatchRoute = require("./routes/assetSetBatchRoute");
+const assetInventoryTypeRoute = require("./routes/assetInventoryTypeRoute");
+const assetInventoryRoute = require("./routes/assetInventoryRoute");
+const assetInventoryMeasurementUnitRoute = require("./routes/assetInventoryMearurementUnitRoute");
 
 const app = express();
 
@@ -513,6 +516,12 @@ app.use(
 app.use("/api/v1/assetstocks", assetStockRoute);
 app.use("/api/v1/assetsets", assetSetRoute);
 app.use("/api/v1/assetsetbatches", assetSetBatchRoute);
+app.use("/api/v1/assetinventorytypes", assetInventoryTypeRoute);
+app.use("/api/v1/assetinventories", assetInventoryRoute);
+app.use(
+  "/api/v1/assetinventorymeasurementunits",
+  assetInventoryMeasurementUnitRoute
+);
 
 //tackling unhandled routes in the application
 app.all("*", (req, res, next) => {

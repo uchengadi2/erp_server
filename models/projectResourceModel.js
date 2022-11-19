@@ -13,9 +13,9 @@ const projectResourceSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "ServiceOutlet",
     },
-    project: {
+    operation: {
       type: mongoose.Schema.ObjectId,
-      ref: "ProjectProject",
+      ref: "OperationOperation",
     },
     assetType: {
       type: mongoose.Schema.ObjectId,

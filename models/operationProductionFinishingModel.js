@@ -21,6 +21,55 @@ const operationProductionFinishingSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "OperationFinishingType",
     },
+    processingType: {
+      type: mongoose.Schema.ObjectId,
+      ref: "operationProcessingType",
+    },
+    process: {
+      type: mongoose.Schema.ObjectId,
+      ref: "OperationProcessing",
+    },
+    inventoryType: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetInventoryType",
+    },
+    inventory: {
+      type: mongoose.Schema.ObjectId,
+      ref: "AssetInventory",
+    },
+    availableInventoryQuantity: {
+      type: Number,
+      default: 0,
+    },
+    availableInventoryUnit: {
+      type: String,
+    },
+    inventoryCostPerUnit: {
+      type: Number,
+      default: 0,
+    },
+
+    inventoryUnitCostCurrency: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Currency",
+    },
+    inventoryQuantityAllocated: {
+      type: Number,
+      default: 0,
+    },
+    allocatedInventoryUnit: {
+      type: String,
+    },
+
+    extraFinishingCost: {
+      type: Number,
+      default: 0,
+    },
+
+    extraFinishingCostCurrency: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Currency",
+    },
 
     finishingDate: {
       type: Date,
@@ -46,12 +95,15 @@ const operationProductionFinishingSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    finishingCost: {
-      type: Number,
+    processorType: {
+      type: String,
+      enum: ["human", "machine"],
     },
-    currency: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Currency",
+    processor: {
+      type: String,
+    },
+    supervisor: {
+      type: String,
     },
   },
   {

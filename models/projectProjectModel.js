@@ -28,10 +28,7 @@ const projectProjectSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
-    serviceOutlet: {
-      type: mongoose.Schema.ObjectId,
-      ref: "ServiceOutlet",
-    },
+
     startDate: {
       type: Date,
     },

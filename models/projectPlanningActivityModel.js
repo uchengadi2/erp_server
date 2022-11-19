@@ -9,10 +9,7 @@ const projectPlanningActivitySchema = new mongoose.Schema(
     refNumber: {
       type: String,
     },
-    serviceOutlet: {
-      type: mongoose.Schema.ObjectId,
-      ref: "ServiceOutlet",
-    },
+
     project: {
       type: mongoose.Schema.ObjectId,
       ref: "ProjectProject",
